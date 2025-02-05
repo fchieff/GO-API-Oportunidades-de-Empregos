@@ -6,24 +6,25 @@ import (
 )
 
 func InitializeRoutes(router *gin.Engine) {
+	// Initialize handler
+	handler.InitHandler()
 
 	// Routes
 	v1 := router.Group("/api/v1")
-
 	{
-		// Show Opening
-		v1.GET("/opening", handler.CreateOpeningHandler)
+		// Create Opening (POST)
+		v1.POST("/opening", handler.CreateOpeningHandler)
 
-		// Post Opening
-		v1.POST("/opening", handler.ShowOpeningHandler)
+		// Show Opening (GET)
+		v1.GET("/opening", handler.ShowOpeningHandler)
 
-		// Delete Opening
+		// Delete Opening (DELETE)
 		v1.DELETE("/opening", handler.DeleteOpeningHandler)
 
-		// Update Opening
+		// Update Opening (PUT)
 		v1.PUT("/opening", handler.UpdateOpeningHandler)
 
-		// Show Opening
+		// List Openings (GET)
 		v1.GET("/openings", handler.ListOpeningsHandler)
 	}
 }
